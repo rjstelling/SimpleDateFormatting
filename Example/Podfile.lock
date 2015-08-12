@@ -1,0 +1,20 @@
+PODS:
+  - Expecta (1.0.2)
+  - SimpleDateFormatting (0.1.0)
+  - Specta (1.0.3)
+
+DEPENDENCIES:
+  - Expecta
+  - SimpleDateFormatting (from `../`)
+  - Specta
+
+EXTERNAL SOURCES:
+  SimpleDateFormatting:
+    :path: ../
+
+SPEC CHECKSUMS:
+  Expecta: 54e8a3530add08f4f0208c111355eda7cde74a53
+  SimpleDateFormatting: d2ca09a1a8168a93d70d4c1cded1bc00ced7d352
+  Specta: cf3e4188cf35375c3ee2cd03f8db8f1f4ef98234
+
+COCOAPODS: 0.38.2
