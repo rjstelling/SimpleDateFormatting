@@ -1,6 +1,6 @@
 # SimpleDateFormatting
 
-[![CI Status](http://img.shields.io/travis/Richard Stelling/SimpleDateFormatting.svg?style=flat)](https://travis-ci.org/Richard Stelling/SimpleDateFormatting)
+[![CI Status](http://img.shields.io/travis/Richard Stelling/SimpleDateFormatting.svg?style=flat)](https://travis-ci.org/rjstelling/SimpleDateFormatting)
 [![Version](https://img.shields.io/cocoapods/v/SimpleDateFormatting.svg?style=flat)](http://cocoapods.org/pods/SimpleDateFormatting)
 [![License](https://img.shields.io/cocoapods/l/SimpleDateFormatting.svg?style=flat)](http://cocoapods.org/pods/SimpleDateFormatting)
 [![Platform](https://img.shields.io/cocoapods/p/SimpleDateFormatting.svg?style=flat)](http://cocoapods.org/pods/SimpleDateFormatting)
