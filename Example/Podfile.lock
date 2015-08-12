@@ -1,6 +1,6 @@
 PODS:
   - Expecta (1.0.2)
-  - SimpleDateFormatting (0.1.0)
+  - SimpleDateFormatting (0.1.1)
   - Specta (1.0.3)
 
 DEPENDENCIES:
@@ -14,7 +14,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Expecta: 54e8a3530add08f4f0208c111355eda7cde74a53
-  SimpleDateFormatting: b6b77096c49195c59a640ee75aa27ed056013d5f
+  SimpleDateFormatting: 957a9a1dce8d76769252ba8b99c7f9a56ae6a3d4
   Specta: cf3e4188cf35375c3ee2cd03f8db8f1f4ef98234
 
 COCOAPODS: 0.38.2
