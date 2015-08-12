@@ -1,0 +1,13 @@
+source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+
+target 'SimpleDateFormatting_Example', :exclusive => true do
+  pod "SimpleDateFormatting", :path => "../"
+end
+
+target 'SimpleDateFormatting_Tests', :exclusive => true do
+  pod "SimpleDateFormatting", :path => "../"
+
+  pod 'Specta'
+  pod 'Expecta'
+end
