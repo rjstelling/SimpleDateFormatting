@@ -10,21 +10,20 @@
 Pod::Spec.new do |s|
   s.name             = "SimpleDateFormatting"
   s.version          = "0.1.0"
-  s.summary          = "A short description of SimpleDateFormatting."
+  s.summary          = "A simple set of classes and methods to easily format dates and times."
   s.description      = <<-DESC
-                       An optional longer description of SimpleDateFormatting
 
-                       * Markdown format.
-                       * Don't worry about the indent, we strip it!
+                            Simple Date Formatting alows for quick and efficent formatting of NSDate objects into NSString objects. 
+
                        DESC
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/SimpleDateFormatting"
+  s.homepage         = "https://github.com/rjstelling/SimpleDateFormatting"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "Richard Stelling" => "richard@empiricalmagic.com" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/SimpleDateFormatting.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.source           = { :git => "https://github.com/rjstelling/SimpleDateFormatting.git", :tag => s.version.to_s }
+  s.social_media_url = 'https://twitter.com/rjstelling'
 
-  s.platform     = :ios, '7.0'
+  s.platform     = :ios, '8.1'
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/**/*'
@@ -32,7 +31,4 @@ Pod::Spec.new do |s|
     'SimpleDateFormatting' => ['Pod/Assets/*.png']
   }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
 end
