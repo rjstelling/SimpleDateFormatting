@@ -175,9 +175,9 @@
 
 + (void)test1
 {
-    id test = [SDFSimpleDateFormatter defaultDateFormatter];
-    __weak id weakTest = test;
-    __strong id strongTest = test;
+    __unused id test = [SDFSimpleDateFormatter defaultDateFormatter];
+    __unused __weak id weakTest = test;
+    __unused __strong id strongTest = test;
     
     NSAssert(test, @"Retain count invailed");
     NSAssert(weakTest, @"Retain count invailed");
