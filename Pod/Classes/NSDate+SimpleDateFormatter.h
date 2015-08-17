@@ -10,4 +10,10 @@
 
 @interface NSDate (SimpleDateFormatter)
 
+- (NSString *)defaultFormattedString:(BOOL)withTime;
+
+- (NSString *)longFormattedString:(BOOL)withTime;
+
+- (NSString *)shortFormattedString:(BOOL)withTime;
+
 @end
