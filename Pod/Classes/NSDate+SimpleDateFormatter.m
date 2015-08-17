@@ -9,8 +9,9 @@
 #import "NSDate+SimpleDateFormatter.h"
 #import "SDFSimpleDateFormatter.h"
 
-@implementation NSDate (SimpleDateFormatter)
+NS_ASSUME_NONNULL_BEGIN
 
+@implementation NSDate (SimpleDateFormatter)
 
 - (NSString *)defaultFormattedString:(BOOL)withTime
 {
@@ -34,3 +35,5 @@
 }
 
 @end
+
+NS_ASSUME_NONNULL_END

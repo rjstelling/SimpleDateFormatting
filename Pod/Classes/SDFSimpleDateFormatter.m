@@ -14,8 +14,6 @@
 + (nonnull NSDateFormatter *)longDateFormatter SDFCompilerCachedResult;
 + (nonnull NSDateFormatter *)shortDateFormatter SDFCompilerCachedResult;
 
-
-
 @end
 
 @implementation SDFSimpleDateFormatter
