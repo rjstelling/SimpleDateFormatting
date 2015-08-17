@@ -11,4 +11,26 @@
 
 @implementation NSDate (SimpleDateFormatter)
 
+
+- (NSString *)defaultFormattedString:(BOOL)withTime
+{
+    return withTime ?
+        [SDFSimpleDateFormatter defaultDateTimeStringFromDate:self] :
+        [SDFSimpleDateFormatter defaultFormattedStringFromDate:self];
+}
+
+- (NSString *)longFormattedString:(BOOL)withTime
+{
+    return withTime ?
+        [SDFSimpleDateFormatter longDateTimeStringFromDate:self] :
+        [SDFSimpleDateFormatter longFormattedStringFromDate:self];
+}
+
+- (NSString *)shortFormattedString:(BOOL)withTime
+{
+    return withTime ?
+        [SDFSimpleDateFormatter shortDateTimeStringFromDate:self] :
+        [SDFSimpleDateFormatter shortFormattedStringFromDate:self];
+}
+
 @end
