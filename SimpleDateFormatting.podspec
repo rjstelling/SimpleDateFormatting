@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "SimpleDateFormatting"
-  s.version          = "0.1.1"
+  s.version          = "0.1.2"
   s.summary          = "A simple set of classes and methods to easily format dates and times."
   s.description      = <<-DESC
 
