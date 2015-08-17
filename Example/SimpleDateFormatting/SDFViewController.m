@@ -43,28 +43,55 @@
     {
         @autoreleasepool
         {
-            NSString *str = [SDFSimpleDateFormatter defaultFormattedStringFromDate:[NSDate date]];
+//            NSString *str = [SDFSimpleDateFormatter defaultFormattedStringFromDate:[NSDate date]];
+//            NSLog(@"DEFAULT DATE #%da :: %@", i, str);
+//            str = nil;
+//            
+//            str = [SDFSimpleDateFormatter longFormattedStringFromDate:[NSDate date]];
+//            NSLog(@"LONG DATE    #%db :: %@", i, str);
+//            str = nil;
+//            
+//            str = [SDFSimpleDateFormatter shortFormattedStringFromDate:[NSDate date]];
+//            NSLog(@"SHORT DATE   #%dc :: %@", i, str);
+//            str = nil;
+//            
+//            str = [SDFSimpleDateFormatter defaultDateTimeStringFromDate:[NSDate date]];
+//            NSLog(@"DEFAULT DATE/TIME #%da :: %@", i, str);
+//            str = nil;
+//            
+//            str = [SDFSimpleDateFormatter longDateTimeStringFromDate:[NSDate date]];
+//            NSLog(@"LONG DATE/TIME    #%db :: %@", i, str);
+//            str = nil;
+//            
+//            str = [SDFSimpleDateFormatter shortDateTimeStringFromDate:[NSDate date]];
+//            NSLog(@"SHORT DATE/TIME   #%dc :: %@", i, str);
+//            str = nil;
+            
+            NSString *str = nil;
+            
+            NSDate *date = [NSDate date];
+            str = [date defaultFormattedString:NO];
             NSLog(@"DEFAULT DATE #%da :: %@", i, str);
             str = nil;
             
-            str = [SDFSimpleDateFormatter longFormattedStringFromDate:[NSDate date]];
-            NSLog(@"LONG DATE    #%db :: %@", i, str);
+            str = [date longFormattedString:NO];
+            NSLog(@"SHORT DATE #%da :: %@", i, str);
+            str = nil;
+
+            str = [date shortFormattedString:NO];
+            NSLog(@"SHORT DATE #%da :: %@", i, str);
             str = nil;
             
-            str = [SDFSimpleDateFormatter shortFormattedStringFromDate:[NSDate date]];
-            NSLog(@"SHORT DATE   #%dc :: %@", i, str);
+            str = [date defaultFormattedString:YES];
+            NSLog(@"DEFAULT DATE #%db :: %@", i, str);
             str = nil;
             
-            str = [SDFSimpleDateFormatter defaultDateTimeStringFromDate:[NSDate date]];
-            NSLog(@"DEFAULT DATE/TIME #%da :: %@", i, str);
+            str = [date longFormattedString:YES];
+            NSLog(@"SHORT DATE #%db :: %@", i, str);
             str = nil;
             
-            str = [SDFSimpleDateFormatter longDateTimeStringFromDate:[NSDate date]];
-            NSLog(@"LONG DATE/TIME    #%db :: %@", i, str);
-            str = nil;
-            
-            str = [SDFSimpleDateFormatter shortDateTimeStringFromDate:[NSDate date]];
-            NSLog(@"SHORT DATE/TIME   #%dc :: %@", i, str);
+            str = [date shortFormattedString:YES];
+            NSLog(@"SHORT DATE #%db :: %@", i, str);
             str = nil;
         }
     }
