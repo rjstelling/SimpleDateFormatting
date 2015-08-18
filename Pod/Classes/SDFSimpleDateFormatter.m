@@ -8,6 +8,26 @@
 
 #import "SDFSimpleDateFormatter.h"
 
+typedef struct _SDFDateElements {
+    unsigned int seconds; //index: 0
+    unsigned int minuites;
+    unsigned int hours;
+    unsigned int days;
+    unsigned int weeks;
+    unsigned int months;
+    unsigned int years; //index: 6
+} SDFDateElements;
+
+const NSTimeInterval SDFSecond      = 1.0;
+const NSTimeInterval SDFMin         = SDFSecond * 60.0;
+const NSTimeInterval SDFHour        = SDFMin * 60.0;
+const NSTimeInterval SDFDay         = SDFHour * 24.0;
+const NSTimeInterval SDFWeek        = SDFDay * 7.0;
+const NSTimeInterval SDFMonth       = SDFWeek * 4.0;
+const NSTimeInterval SDFYear        = SDFMonth * 12.0;
+
+const NSTimeInterval SDFEpocs[] = { SDFSecond, SDFMin, SDFHour, SDFDay, SDFWeek, SDFMonth, SDFYear };
+
 @interface SDFSimpleDateFormatter ()
 
 + (nonnull NSDateFormatter *)defaultDateFormatter SDFCompilerCachedResult;
@@ -97,7 +117,56 @@
     return shortDateFormatter_;
 }
 
++ (void)getDateElementsFromDate:(NSDate *)date elements:(SDFDateElements *)dateElements
+{
+    NSTimeInterval timeInterval = date.timeIntervalSinceNow;
+    NSTimeInterval normlisedInterval = roundf(timeInterval);
+    
+    NSTimeInterval remainder = fabs(normlisedInterval);
+    
+    int startingEpocIndex = (sizeof(SDFDateElements) / sizeof(unsigned int)) - 1; //zero based index
+    
+    unsigned int *startingDateElement = &(*dateElements).seconds;
+    
+    for (; startingEpocIndex >= 0; startingEpocIndex--)
+    {
+        if(remainder > SDFEpocs[startingEpocIndex])
+        {
+            startingDateElement += startingEpocIndex;
+            break;
+        }
+    }
+    
+    int currentEpocIndex = startingEpocIndex;
+    
+    do
+    {
+        double epoc = SDFEpocs[currentEpocIndex];
+        double value = (remainder / epoc);
+        remainder = ((int)remainder % (int)epoc);
+        
+        *startingDateElement = (unsigned int)(value);
+        
+        currentEpocIndex--;
+        startingDateElement--;
+        
+    } while (remainder > 0);
+    
+    NSLog(@"%p", &dateElements);
+}
+
 #pragma mark - Public API
+
++ (NSString *)relativeStringFromDate:(NSDate *)date
+{
+    SDFDateElements dateElements = {0L};
+    
+    [self getDateElementsFromDate:date elements:&dateElements];
+    
+    //TODO: STRINGS!
+    
+    return @"";
+}
 
 + (NSString *)defaultFormattedStringFromDate:(NSDate *)date
 {

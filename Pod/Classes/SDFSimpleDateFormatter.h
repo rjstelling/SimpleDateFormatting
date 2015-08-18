@@ -42,6 +42,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 //IDEA: API that that takes style and format?
 
+// Reletive Dates
++ (NSString *)relativeStringFromDate:(NSDate *)date;
+
 @end
 
 NS_ASSUME_NONNULL_END
