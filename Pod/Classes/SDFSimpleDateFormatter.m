@@ -18,6 +18,11 @@ typedef struct _SDFDateElements {
     unsigned int years; //index: 6
 } SDFDateElements;
 
+typedef struct _SDFDateObject {
+    BOOL isFuture;
+    SDFDateElements elements;
+} SDFDateObject;
+
 const NSTimeInterval SDFSecond      = 1.0;
 const NSTimeInterval SDFMin         = SDFSecond * 60.0;
 const NSTimeInterval SDFHour        = SDFMin * 60.0;
@@ -120,22 +125,25 @@ const NSTimeInterval SDFEpocs[] = { SDFSecond, SDFMin, SDFHour, SDFDay, SDFWeek,
 + (void)getDateElementsFromDate:(NSDate *)date elements:(SDFDateElements *)dateElements
 {
     NSTimeInterval timeInterval = date.timeIntervalSinceNow;
-    NSTimeInterval normlisedInterval = roundf(timeInterval);
+    NSTimeInterval normlisedInterval = roundf(timeInterval); //THIS CAUSES LOSS OF SECONDS IN LONG TIME SPANS
     
     NSTimeInterval remainder = fabs(normlisedInterval);
     
-    int startingEpocIndex = (sizeof(SDFDateElements) / sizeof(unsigned int)) - 1; //zero based index
+    int startingEpocIndex = 6; //(sizeof(SDFDateElements) / sizeof(unsigned int)); //zero based index
     
-    unsigned int *startingDateElement = &(*dateElements).seconds;
+    //unsigned int *startingDateElement = &dateObject->elements.seconds;
+    unsigned int *startingDateElement = &dateElements->seconds;
     
     for (; startingEpocIndex >= 0; startingEpocIndex--)
     {
-        if(remainder > SDFEpocs[startingEpocIndex])
+        if(remainder >= SDFEpocs[startingEpocIndex])
         {
             startingDateElement += startingEpocIndex;
             break;
         }
     }
+    
+    
     
     int currentEpocIndex = startingEpocIndex;
     
@@ -143,7 +151,7 @@ const NSTimeInterval SDFEpocs[] = { SDFSecond, SDFMin, SDFHour, SDFDay, SDFWeek,
     {
         double epoc = SDFEpocs[currentEpocIndex];
         double value = (remainder / epoc);
-        remainder = ((int)remainder % (int)epoc);
+        remainder = (NSTimeInterval)((unsigned int)remainder % (unsigned int)epoc);
         
         *startingDateElement = (unsigned int)(value);
         
@@ -152,19 +160,26 @@ const NSTimeInterval SDFEpocs[] = { SDFSecond, SDFMin, SDFHour, SDFDay, SDFWeek,
         
     } while (remainder > 0);
     
-    NSLog(@"%p", &dateElements);
+    //NSLog(@"%p", dateObject);
 }
 
 #pragma mark - Public API
 
 + (NSString *)relativeStringFromDate:(NSDate *)date
 {
+    //SDFDateObject dateObject = {0L};
+    //[self getDateElementsFromDate:date elements:&dateObject];
+
     SDFDateElements dateElements = {0L};
-    
     [self getDateElementsFromDate:date elements:&dateElements];
     
     //TODO: STRINGS!
-    
+/*
+    @"More than <N> <EPOC> ago";
+    @"About <N> <EPOC> ago"
+    @"<N> <EPOC> ago"
+    @"Less than <N> <EPOC> ago"
+*/
     return @"";
 }
 
