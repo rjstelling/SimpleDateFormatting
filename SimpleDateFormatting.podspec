@@ -26,9 +26,12 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '8.1'
   s.requires_arc = true
 
+#spec.pod_target_xcconfig = { 'OTHER_LDFLAGS' => '-lObjC' }
+
   s.source_files = 'Pod/Classes/**/*'
-  s.resource_bundles = {
-    'SimpleDateFormatting' => ['Pod/Assets/*.png']
-  }
+#  s.resource_bundles = {
+#   'SimpleDateFormatting' => ['Pod/Assets/*']
+# }
+    s.resource = ['Pod/Assets/*']
 
 end

@@ -1,0 +1,30 @@
+/* 
+  SDFReletiveDates.strings
+  SimpleDateFormatter
+
+  Created by Richard Stelling on 21/08/2015.
+
+*/
+
+/* Singular */
+"second"    = "second";
+"minute"    = "minute";
+"hour"      = "hour";
+"day"       = "day";
+"week"      = "week";
+"month"     = "month";
+"year"      = "year";
+
+/* Plural */
+"seconds"    = "seconds";
+"minutes"    = "minutes";
+"hours"      = "hours";
+"days"       = "days";
+"weeks"      = "weeks";
+"months"     = "months";
+"years"      = "years";
+
+"More than <N> <EPOC> ago"  = "More than %d %@ ago";
+"About <N> <EPOC> ago"      = "About %d %@ ago";
+"<N> <EPOC> ago"            = "%d %@ ago";
+"Less than <N> <EPOC> ago"  = "Less than %d %@ ago";

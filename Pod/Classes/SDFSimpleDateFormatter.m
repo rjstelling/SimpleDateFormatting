@@ -8,6 +8,29 @@
 
 #import "SDFSimpleDateFormatter.h"
 
+/*
+ // Use something like this to laod a resource bundle
+ 
+ NSString *bundlePath = [[NSBundle bundleForClass:someClassFromYourPod.class] pathForResource:@"MyProject" ofType:@"bundle"];
+ NSBundle *projectBundle = [NSBundle bundleWithPath:bundlePath];
+
+ */
+
+#ifndef SDF_RELETIVE_DATE_TEMPLATE_STRINGS
+# warning Compiling with defaults
+# define SDF_RELETIVE_DATE_TEMPLATE_STRINGS @"SDFReletiveDates"
+#endif
+
+#ifndef SDF_RELETIVE_DATE_TEMPLATE_STRINGS_BUNDLE
+# define SDF_RELETIVE_DATE_TEMPLATE_STRINGS_BUNDLE [NSBundle bundleForClass:[self class]]
+#endif
+
+#define SDFReletiveDateString(str, value, epoc) \
+    ({ \
+        NSString *fmt = NSLocalizedStringFromTableInBundle(str, SDF_RELETIVE_DATE_TEMPLATE_STRINGS, SDF_RELETIVE_DATE_TEMPLATE_STRINGS_BUNDLE, @""); \
+        [NSString stringWithFormat:fmt, value, epoc]; \
+    })
+
 typedef struct _SDFDateElements {
     unsigned int seconds; //index: 0
     unsigned int minuites;
@@ -143,8 +166,6 @@ const NSTimeInterval SDFEpocs[] = { SDFSecond, SDFMin, SDFHour, SDFDay, SDFWeek,
         }
     }
     
-    
-    
     int currentEpocIndex = startingEpocIndex;
     
     do
@@ -167,20 +188,61 @@ const NSTimeInterval SDFEpocs[] = { SDFSecond, SDFMin, SDFHour, SDFDay, SDFWeek,
 
 + (NSString *)relativeStringFromDate:(NSDate *)date
 {
-    //SDFDateObject dateObject = {0L};
-    //[self getDateElementsFromDate:date elements:&dateObject];
-
     SDFDateElements dateElements = {0L};
     [self getDateElementsFromDate:date elements:&dateElements];
     
-    //TODO: STRINGS!
-/*
-    @"More than <N> <EPOC> ago";
-    @"About <N> <EPOC> ago"
-    @"<N> <EPOC> ago"
-    @"Less than <N> <EPOC> ago"
-*/
-    return @"";
+    //Strings
+    NSString *template = @"More than <N> <EPOC> ago";
+    NSString *epoc = nil;
+    unsigned int value = -1;
+    
+    int startingEpocIndex = 0;
+    NSArray *epocPluralKeys = @[ @"years", @"months", @"weeks", @"days", @"hours", @"minutes", @"seconds" ];
+    NSArray *epocSingularKeys = @[ @"year", @"month", @"week", @"day", @"hour", @"minute", @"second" ];
+    
+    unsigned int *startingDateElement = &dateElements.years;
+    
+    for (; startingEpocIndex >= 0; startingEpocIndex++)
+    {
+        value = *startingDateElement;
+        
+        //Template
+        if(startingEpocIndex == 6)
+            template = @"<N> <EPOC> ago";
+        else if(startingEpocIndex == 5)
+            template = @"About <N> <EPOC> ago";
+            
+        // Epoc
+        if(value > 1)
+        {
+            epoc = epocPluralKeys[startingEpocIndex];
+            break;
+        }
+        else if (value > 0)
+        {
+            epoc = epocSingularKeys[startingEpocIndex];
+            break;
+        }
+        else
+        {
+            startingDateElement--;
+        }
+    }
+    
+//#ifdef DEBUG
+//    
+//    NSBundle *bundle = SDF_RELETIVE_DATE_TEMPLATE_STRINGS_BUNDLE?SDF_RELETIVE_DATE_TEMPLATE_STRINGS_BUNDLE:[NSBundle mainBundle];
+//    
+//    NSAssert([bundle pathForResource:SDF_RELETIVE_DATE_TEMPLATE_STRINGS ofType:@"strings"], @"Cannot load strings file");
+//    
+//    NSLog(@"%@", SDF_RELETIVE_DATE_TEMPLATE_STRINGS);
+//    NSLog(@"%@", bundle);
+//    
+//#endif
+    
+    NSString *reletiveDate = SDFReletiveDateString(template, value, epoc);
+    
+    return reletiveDate;
 }
 
 + (NSString *)defaultFormattedStringFromDate:(NSDate *)date
