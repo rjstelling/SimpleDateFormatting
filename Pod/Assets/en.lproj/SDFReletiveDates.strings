@@ -28,3 +28,4 @@
 "About <N> <EPOC> ago"      = "About %d %@ ago";
 "<N> <EPOC> ago"            = "%d %@ ago";
 "Less than <N> <EPOC> ago"  = "Less than %d %@ ago";
+"Just now"                  = "Just Now";

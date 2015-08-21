@@ -151,6 +151,10 @@ const NSTimeInterval SDFEpocs[] = { SDFSecond, SDFMin, SDFHour, SDFDay, SDFWeek,
     
     NSTimeInterval remainder = fabs(normlisedInterval);
     
+    // Short circut the method and return zeros in struct
+    if(remainder == 0)
+        return;
+    
     int startingEpocIndex = 6; //(sizeof(SDFDateElements) / sizeof(unsigned int)); //zero based index
     
     //unsigned int *startingDateElement = &dateObject->elements.seconds;
@@ -191,7 +195,7 @@ const NSTimeInterval SDFEpocs[] = { SDFSecond, SDFMin, SDFHour, SDFDay, SDFWeek,
     [self getDateElementsFromDate:date elements:&dateElements];
     
     //Strings
-    NSString *template = @"More than <N> <EPOC> ago";
+    NSString *template = @"Just now";
     NSString *epoc = nil;
     unsigned int value = -1;
     
@@ -201,7 +205,7 @@ const NSTimeInterval SDFEpocs[] = { SDFSecond, SDFMin, SDFHour, SDFDay, SDFWeek,
     
     unsigned int *startingDateElement = &dateElements.years;
     
-    for (; startingEpocIndex >= 0; startingEpocIndex++)
+    for (; startingEpocIndex <= 6; startingEpocIndex++)
     {
         value = *startingDateElement;
         
@@ -227,6 +231,10 @@ const NSTimeInterval SDFEpocs[] = { SDFSecond, SDFMin, SDFHour, SDFDay, SDFWeek,
             startingDateElement--;
         }
     }
+    
+    //TODO: This is gross
+    if(startingEpocIndex == 7)
+        template = @"Just now";
     
 //#ifdef DEBUG
 //    
