@@ -63,7 +63,7 @@
     //NSString *dateStr = [SDFSimpleDateFormatter relativeStringFromDate:fortyfiveSecondsAgo];
     
     NSLog(@"Start...");
-    for (NSDate *date in     @[
+    for (NSDate *date in     @[     [NSDate date], //now
                                     fortyfiveSecondsAgo,
                                     oneSecondAgo,
                                
