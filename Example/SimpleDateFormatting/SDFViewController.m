@@ -63,7 +63,11 @@
     //NSString *dateStr = [SDFSimpleDateFormatter relativeStringFromDate:fortyfiveSecondsAgo];
     
     NSLog(@"Start...");
-    for (NSDate *date in     @[     [NSDate dateWithTimeIntervalSinceNow:-321020102.00], //
+    for (NSDate *date in     @[
+                                    fortyfiveSecondsAgo,
+                                    oneSecondAgo,
+                               
+                                    [NSDate dateWithTimeIntervalSinceNow:-321020102.00], //
                                     [NSDate dateWithTimeIntervalSinceNow:-321020100.00],
                                     threeYearskSixMonthsAgo,
                                    threeYearskAgo,
@@ -81,6 +85,8 @@
                                    fortyfiveSecondsAgo,
                                    oneSecondAgo ]) {
         NSString *dateStr = [SDFSimpleDateFormatter relativeStringFromDate:date];
+        
+        NSLog(@"%@ -> %@", [date descriptionWithLocale:[NSLocale currentLocale]], dateStr);
     }
     
 

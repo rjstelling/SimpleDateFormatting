@@ -4,7 +4,7 @@ platform :ios, '8.1'
 
 use_frameworks!
 
-target 'SimpleDateFormatting_Example', :exclusive => true do
+target 'SimpleDateFormatting_Example', :exclusive => true do |target|
   pod "SimpleDateFormatting", :path => "../"
 end
 
@@ -14,3 +14,18 @@ target 'SimpleDateFormatting_Tests', :exclusive => true do
   pod 'Specta'
   pod 'Expecta'
 end
+
+#post_install do |installer|
+#    installer.pods_project.targets.each do |target|
+#        
+#        if target.name == 'SimpleDateFormatting'
+#        
+#            target.build_configurations.each do |config|
+#                #puts config.build_settings['GCC_PREPROCESSOR_DEFINITIONS']
+#                config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= ['SDF_RELETIVE_DATE_TEMPLATE_STRINGS=@"TestReletiveDateTemplates"','SDF_RELETIVE_DATE_TEMPLATE_STRINGS_BUNDLE=nil']
+#            end
+#            
+#        end
+#        
+#    end
+#end
