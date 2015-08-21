@@ -17,7 +17,6 @@
  */
 
 #ifndef SDF_RELETIVE_DATE_TEMPLATE_STRINGS
-# warning Compiling with defaults
 # define SDF_RELETIVE_DATE_TEMPLATE_STRINGS @"SDFReletiveDates"
 #endif
 
