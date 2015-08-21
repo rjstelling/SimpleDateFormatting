@@ -34,6 +34,11 @@ NS_ASSUME_NONNULL_BEGIN
         [SDFSimpleDateFormatter shortFormattedStringFromDate:self];
 }
 
+- (NSString *)reletiveString
+{
+    return [SDFSimpleDateFormatter relativeStringFromDate:self];
+}
+
 @end
 
 NS_ASSUME_NONNULL_END

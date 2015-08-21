@@ -16,4 +16,6 @@
 
 - (NSString *)shortFormattedString:(BOOL)withTime;
 
+- (NSString *)reletiveString;
+
 @end
