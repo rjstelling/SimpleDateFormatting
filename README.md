@@ -27,3 +27,7 @@ Richard Stelling, richard@empiricalmagic.com
 ## License
 
 SimpleDateFormatting is available under the MIT license. See the LICENSE file for more info.
+
+---
+
+[Contact](https://agent-mailbox.richardstelling.com/#contact)
